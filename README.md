@@ -1,3 +1,5 @@
+##### Not Financial Advice
+
 # Creating a Telegram Bot to Trigger Bybit Trades
 
 In this project, we'll be creating a Telegram bot that listens to a specific channel for messages. When it receives a message with a specific format, the bot will trigger a trade on Bybit, a cryptocurrency exchange.
@@ -65,7 +67,6 @@ stopLoss_short = 1.1
 
 ```
 
-
 ### Create a Telegram API Key
 In this paragraph I will show how to create an API key on Telegram:
 
@@ -89,3 +90,20 @@ In this paragraph I will show how to create an API key on Telegram:
 8. We've gathered all information we need from Telegram.
 
 <img src="path/to/image.jpg">
+
+### Fill the 'config.ini' file with the correct input data.
+We are almost there!
+
+if you followed up with the steps above, both the API-keys and secrets should be filled. The next step is to also fill the remaining telegram information. You can also edit all the other preferences. For example, the bot will use 20% of the USDT available for one trade.
+
+### Install the necessary libraries (Pybit, Telethon etc.) from requirements.txt
+Run the following command in your terminal: 
+
+```
+pip install -r requirements.txt
+``` 
+You can of course choose to create a virtual environment first for a clean install. 
+
+### Run the python code 'TelegramChatListener'
+As the title states, run the code. You might want to start with a test group in your config.ini and try it yourself.
+
