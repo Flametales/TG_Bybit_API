@@ -43,7 +43,7 @@ phone =
 username = 
 
 #Telegram channel that the script listens to
-tg_channel = 
+tg_channel = FOR EXAMPLE (https://t.me/+wdGMdh-9q9Nwerw3)
 
 [bybit]
 
