@@ -18,12 +18,74 @@ That's the basic outline of what we'll be doing. Of course, there are many detai
 ### Create the 'config.ini' file
 Before we can start, you have to create your own 'config.ini' file. This file protects the developer from pushing valuable API information to the public. 
 
+```
+[Telegram]
+# no need for quotes
+# you can get telegram development credentials in telegram API Development Tools
+api_id = 
+api_hash = 
+
+# use full phone number including + and country code
+phone = 
+username = 
+
+#Telegram channel that the script listens to
+tg_channel = 
+
+[bybit]
+
+api_key =
+api_secret = 
+
+# Leverage for longing/shorting
+buyLeverage = 5
+sellLeverage = 5
+
+# Do you want to keep the position open perpetually or with a timer to snipe the Rose fan base? 
+# Values are <True> or <False> Capital letter is important. 
+withTimer = True
+
+# 60 == 1 minute, 120 == 2 minutes etc. Time in seconds.
+seconds_to_keep_trade_open = 10
+
+# 1.0 = 100%, 0.5 = 50% ---> Keep this number float, so there won't be any data issues.
+portfolioPercentage = 0.2
+
+# Percentage of TP and SL on token price. So if ETH price = 1000, and TP = 1.1 TP price => 1100. For stopLoss it could be 0.9 => 900
+# FOR THE BUY TRADES
+
+takeProfit_long = 1.1
+stopLoss_long = 0.9
+
+# Percentage of TP and SL on token price. So if ETH price = 1000, and TP = 0.9 TP price => 900. For stopLoss it could be 1.1 => 1100
+# FOR THE SELL TRADES
+
+takeProfit_short = 0.9
+stopLoss_short = 1.1
+
+```
+
 
 ### Create a Telegram API Key
 In this paragraph I will show how to create an API key on Telegram:
 
+
 1. Log-in on 'https://my.telegram.org/auth' 
-1. Click on 'API Development Tools'
-1. Give your bot a nice name.
+2. Click on 'API Development Tools'
+3. Give your bot a nice name. 
+4. Copy your API-Key and API-Hash to the corresponding fields in the config.ini file.
+5. We've gathered all information we need from Telegram.
+
+### Create a Bybit API Key
+In this paragraph I will show how to create an API key on Telegram:
+
+1. Log-in on (https://www.bybit.com/app/user/api-management) 
+2. Click on 'Create New Key'. 
+3. We are going to use the API for API transaction
+4. Give Read-Write permissions
+5. Optionally, you can give your IP Address up, for extra security (from https://whatismyipaddress.com/)
+6. Select the permissions corresponding the image below.
+7. Copy your API-Key and API-Hash to the corresponding fields in the config.ini file.
+8. We've gathered all information we need from Telegram.
 
 <img src="path/to/image.jpg">
