@@ -89,7 +89,7 @@ In this paragraph I will show how to create an API key on Telegram:
 7. Copy your API-Key and API-Hash to the corresponding fields in the config.ini file.
 8. We've gathered all information we need from Telegram.
 
-<img src="path/to/image.jpg">
+<img src="images\bybitAPI_perms.png">
 
 ### Fill the 'config.ini' file with the correct input data.
 We are almost there!
