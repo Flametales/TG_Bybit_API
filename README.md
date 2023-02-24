@@ -8,6 +8,7 @@ To achieve this, we'll be using the 'Telethon' library to create the Telegram bo
 
 Here are the high-level steps we'll be following:
 
+1. Prepare environment
 1. Create a Telegram API Key on 'https://my.telegram.org/auth'.
 1. Create a Bybit API Key on 'https://www.bybit.com/app/user/api-management' 
 1. Create a 'config.ini' file with the correct input data.
@@ -16,6 +17,16 @@ Here are the high-level steps we'll be following:
 1. Get rich :)
 
 That's the basic outline of what we'll be doing. Of course, there are many details and nuances to each step, but this should give you a good idea of what to expect. Let's get started!
+
+### Prepare environment
+
+1. Download Python from their website. Make sure you have version 3.11 and within the installer choose "ADD TO PATH" <- VERY IMPORTANT! 
+1. Download Visual Studio Code from their website. 
+1. Download this project as a ZIP.
+1. Unzip the project
+1. Import it into the IDE (VS Code).
+1. Download the Python dependency if nessecary.
+1. Create a Virtual environment with VENV if you want for a clean approach <-- optional
 
 ### Create the 'config.ini' file
 Before we can start, you have to create your own 'config.ini' file. This file protects the developer from pushing valuable API information to the public. 
