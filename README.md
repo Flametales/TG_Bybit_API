@@ -14,7 +14,7 @@ Here are the high-level steps we'll be following:
 1. Create a 'config.ini' file with the correct input data.
 1. Install the necessary libraries (Pybit, Telethon etc.) from requirements.txt
 1. Create a client so that the code continues to listen to the channel.
-1. Get rich :)
+1. Get money hopefully :)
 
 That's the basic outline of what we'll be doing. Of course, there are many details and nuances to each step, but this should give you a good idea of what to expect. Let's get started!
 
