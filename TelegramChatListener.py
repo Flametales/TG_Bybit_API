@@ -28,7 +28,6 @@ buyLeverage = config['bybit']['buyLeverage']
 sellLeverage = config['bybit']['sellLeverage']
 portfolioPercentage = config['bybit']['portfolioPercentage']
 seconds_trade_open = config['bybit']['seconds_to_keep_trade_open']
-
 takeProfit_long = config['bybit']['takeProfit_long']
 stopLoss_long = config['bybit']['stopLoss_long']
 
