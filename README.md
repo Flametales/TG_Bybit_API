@@ -64,6 +64,7 @@ seconds_to_keep_trade_open = 10
 # 1.0 = 100%, 0.5 = 50% ---> Keep this number float, so there won't be any data issues.
 portfolioPercentage = 0.2
 
+# Use 0 if you don't want any predefined SL or TP
 # Percentage of TP and SL on token price. So if ETH price = 1000, and TP = 1.1 TP price => 1100. For stopLoss it could be 0.9 => 900
 # FOR THE BUY TRADES
 
