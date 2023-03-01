@@ -8,14 +8,25 @@ To achieve this, we'll be using the 'Telethon' library to create the Telegram bo
 
 Here are the high-level steps we'll be following:
 
+1. Prepare environment
 1. Create a Telegram API Key on 'https://my.telegram.org/auth'.
 1. Create a Bybit API Key on 'https://www.bybit.com/app/user/api-management' 
 1. Create a 'config.ini' file with the correct input data.
 1. Install the necessary libraries (Pybit, Telethon etc.) from requirements.txt
 1. Create a client so that the code continues to listen to the channel.
-1. Get rich :)
+1. Get money hopefully :)
 
 That's the basic outline of what we'll be doing. Of course, there are many details and nuances to each step, but this should give you a good idea of what to expect. Let's get started!
+
+### Prepare environment
+
+1. Download Python from their website. Make sure you have version 3.11 and within the installer choose "ADD TO PATH" <- VERY IMPORTANT! 
+1. Download Visual Studio Code from their website. 
+1. Download this project as a ZIP.
+1. Unzip the project
+1. Import it into the IDE (VS Code).
+1. Download the Python dependency if nessecary.
+1. Create a Virtual environment with VENV if you want for a clean approach <-- optional
 
 ### Create the 'config.ini' file
 Before we can start, you have to create your own 'config.ini' file. This file protects the developer from pushing valuable API information to the public. 
@@ -32,7 +43,7 @@ phone =
 username = 
 
 #Telegram channel that the script listens to
-tg_channel = 
+tg_channel = FOR EXAMPLE (https://t.me/+wdGMdh-9q9Nwerw3)
 
 [bybit]
 
@@ -53,6 +64,7 @@ seconds_to_keep_trade_open = 10
 # 1.0 = 100%, 0.5 = 50% ---> Keep this number float, so there won't be any data issues.
 portfolioPercentage = 0.2
 
+# Use 0 if you don't want any predefined SL or TP
 # Percentage of TP and SL on token price. So if ETH price = 1000, and TP = 1.1 TP price => 1100. For stopLoss it could be 0.9 => 900
 # FOR THE BUY TRADES
 
@@ -94,7 +106,7 @@ In this paragraph I will show how to create an API key on Telegram:
 7. Copy your API-Key and API-Hash to the corresponding fields in the config.ini file.
 8. We've gathered all information we need from Telegram.
 
-<img src="path/to/image.jpg">
+<img src="images\bybitAPI_perms.png">
 
 ### Fill the 'config.ini' file with the correct input data.
 We are almost there!
