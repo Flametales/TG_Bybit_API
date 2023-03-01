@@ -66,6 +66,26 @@ class PositionHTTP(_V5HTTPManager):
             auth=True,
         )
     
+    def set_trading_stop(self, **kwargs):
+        """Set the take profit, stop loss or trailing stop for the position.
+        Required args:
+            category (string): Product type
+                Unified account: linear
+                Normal account: linear, inverse.
+                Please note that category is not involved with business logic
+            symbol (string): Symbol name
+        Returns:
+            Request results as dictionary.
+        Additional information:
+            https://bybit-exchange.github.io/docs/v5/position/trading-stop
+        """
+        return self._submit_request(
+            method="POST",
+            path=f"{self.endpoint}{Position.SET_TRADING_STOP}",
+            query=kwargs,
+            auth=True,
+        )
+
     def set_leverage(self, **kwargs):
         """
         Set the leverage

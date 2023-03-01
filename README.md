@@ -65,6 +65,11 @@ stopLoss_long = 0.9
 takeProfit_short = 0.9
 stopLoss_short = 1.1
 
+# 1 = 100%, 0.5 = 50% ---> Keep this number float, so there won't be any data issues.
+# 0.5% Trailing stop 
+trailing_stop_percentage = 0.005
+
+
 ```
 
 ### Create a Telegram API Key

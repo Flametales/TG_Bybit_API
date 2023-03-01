@@ -41,6 +41,8 @@ if withTimer == "True":
 else:
     withTimer_bool = False
 
+trailing_stopLoss = config['bybit']['trailing_stop_percentage']
+
 # Create the client and connect
 client = TelegramClient(username, api_id, api_hash)
 client.start()
@@ -73,10 +75,6 @@ async def newMessageListener(event):
         symbol_pair = (firstpartpair+"USDT").upper()
         buy_List.append(symbol_pair)
 
-        # # Create orderLinkId, based on a randomInt
-        # y = random.randint(5, 10000000)
-        # orderLinkId = symbol_pair+"_"+str(y)
-
         # Create an instance of TradeHTTP
         position_http = PositionHTTP() 
         trade_http = TradeHTTP()
@@ -91,10 +89,13 @@ async def newMessageListener(event):
         take_profit_long = round(float(last_price_symbol)*float(takeProfit_long), 6)
         stop_loss_long = round(float(last_price_symbol)*float(stopLoss_long), 6)
 
+        trailing_stop_percentage = round(float(last_price_symbol) * float(trailing_stopLoss), 2)
+        print(trailing_stop_percentage)
         # Define the payload
         payload_leverage = {"category": "linear", "symbol": symbol_pair, "buyLeverage": buyLeverage, "sellLeverage": sellLeverage}
         payload_open_trade = {"category": "linear", "symbol": symbol_pair, "side": "Buy", "orderType": "Market", "qty": str(qty_per_trade),"positionIdx": 0, "takeProfit": str(take_profit_long), "stopLoss": str(stop_loss_long) }
         payload_close_trade = {"category": "linear", "symbol": symbol_pair, "side": "Sell", "orderType": "Market", "qty": str(qty_per_trade),"positionIdx": 0, "reduceOnly": True}
+        payload_trailing_stop = { "category": "linear", "symbol": symbol_pair, "trailingStop": str(trailing_stop_percentage), "positionIdx": 0 }
         # payload_get_position = {"category": "linear", "symbol": symbol_pair}
         
         # Try to change the leverage
@@ -106,16 +107,22 @@ async def newMessageListener(event):
             print("Leverage already set and not changed")
 
         # Call the Place Order Method, based on the Payload_trade dict.
-        setTrade = trade_http.place_order(**payload_open_trade)
-        print(setTrade)
+        openTrade = trade_http.place_order(**payload_open_trade)
+        print(openTrade)
+        try: 
+            trailingStop = position_http.set_trading_stop(**payload_trailing_stop)
+            print(trailingStop)
+        except: 
+            "Trailing stop can't be set"
+
         # If withTimer = True, wait for the time to pass and close the trade automatically. If False, trade will stay open.
         if withTimer_bool:
             try:
                 time.sleep(int(seconds_trade_open))
             finally:
                 trade_http = TradeHTTP()
-                setTrade = trade_http.place_order(**payload_close_trade)
-                print(setTrade)
+                closeTrade = trade_http.place_order(**payload_close_trade)
+                print(closeTrade)
                 print("Trade is closed")
         else:
             print("Trade won't be closed by timer")
@@ -149,10 +156,13 @@ async def newMessageListener(event):
         take_profit_short = round(float(last_price_symbol)*float(takeProfit_short), 6)
         stop_loss_short = round(float(last_price_symbol)*float(stopLoss_short), 6)
 
+        trailing_stop_percentage = round(float(last_price_symbol) * float(trailing_stopLoss), 2)
+        print(trailing_stop_percentage)
         # Define the payload
         payload_leverage = {"category": "linear", "symbol": symbol_pair, "buyLeverage": buyLeverage, "sellLeverage": sellLeverage}
         payload_open_trade = {"category": "linear", "symbol": symbol_pair, "side": "Sell", "orderType": "Market", "qty": str(qty_per_trade),"positionIdx": 0, "takeProfit": str(take_profit_short), "stopLoss": str(stop_loss_short) }
         payload_close_trade = {"category": "linear", "symbol": symbol_pair, "side": "Buy", "orderType": "Market", "qty": str(qty_per_trade),"positionIdx": 0, "reduceOnly": True}
+        payload_trailing_stop = { "category": "linear", "symbol": symbol_pair, "trailingStop": str(trailing_stop_percentage), "positionIdx": 0 }
         # payload_get_position = {"category": "linear", "symbol": symbol_pair}
         
         # Try to change the leverage
@@ -164,16 +174,22 @@ async def newMessageListener(event):
             print("Leverage already set and not changed")
 
         # Call the Place Order Method, based on the Payload_trade dict.
-        setTrade = trade_http.place_order(**payload_open_trade)
-        print(setTrade)
-        
+        openTrade = trade_http.place_order(**payload_open_trade)
+        print(openTrade)
+        try: 
+            trailingStop = position_http.set_trading_stop(**payload_trailing_stop)
+            print(trailingStop)
+        except: 
+            "Trailing stop can't be set"
+
+        # If withTimer = True, wait for the time to pass and close the trade automatically. If False, trade will stay open.
         if withTimer_bool:
             try:
                 time.sleep(int(seconds_trade_open))
             finally:
                 trade_http = TradeHTTP()
-                setTrade = trade_http.place_order(**payload_close_trade)
-                print(setTrade)
+                closeTrade = trade_http.place_order(**payload_close_trade)
+                print(closeTrade)
                 print("Trade is closed")
         else:
             print("Trade won't be closed by timer")

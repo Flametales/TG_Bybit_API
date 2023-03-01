@@ -13,3 +13,5 @@ pip-selfcheck.json
 
 #Ignore files
 config.ini
+Flametale.session
+Flametale.session-journal
